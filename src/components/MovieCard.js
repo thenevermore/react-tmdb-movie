@@ -7,16 +7,18 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Rating } from '@mui/material';
 
+const BASE_URL_IMAGE = "https://image.tmdb.org/t/p/original";
+
 export default function MovieCard({movie}) {
   const theme = useTheme();
-
+    
   return (
     <Card sx={{ display: 'flex', mt: 20, maxWidth: 345, margin: 5 }}>
       <CardMedia
         component="img"
         sx={{ width: 151 }}
-        image="http://placekitten.com/400/400"
-        alt="Kucing"
+        image={`${BASE_URL_IMAGE}${movie.poster_path}`}
+        alt={movie.poster_path}
       />
       <Box sx={{ display: 'flex', flexDirection: 'column' }}>
         <CardContent sx={{ flex: '1 0 auto' }}>
