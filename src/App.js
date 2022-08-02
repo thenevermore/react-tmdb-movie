@@ -9,13 +9,14 @@ import { ThemeProvider } from '@mui/material';
 import Navbar from './components/Navbar';
 import MovieCard from './components/MovieCard';
 import theme from './themes/theme';
+import MovieList from './containers/MovieList';
 
 const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <div className="App">
         <Navbar></Navbar>
-        <MovieCard></MovieCard>
+        <MovieList/>
       </div>
     </ThemeProvider>
   );
