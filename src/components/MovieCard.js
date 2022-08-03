@@ -16,13 +16,13 @@ export default function MovieCard({movie}) {
     <Card sx={{ display: 'flex', mt: 20, maxWidth: 345, margin: 5 }}>
       <CardMedia
         component="img"
-        sx={{ width: 151 }}
+        sx={{ width: 150, height: 225 }}
         image={`${BASE_URL_IMAGE}${movie.poster_path}`}
-        alt={movie.poster_path}
+        alt="Movie Poster"
       />
       <Box sx={{ display: 'flex', flexDirection: 'column' }}>
         <CardContent sx={{ flex: '1 0 auto' }}>
-          <Typography component="div" variant="h5">
+          <Typography component="div" variant="h6">
             {movie.title}
           </Typography>
           <Typography variant="subtitle1" color="text.secondary" component="div">
@@ -31,7 +31,7 @@ export default function MovieCard({movie}) {
         </CardContent>
         <Box sx={{ display: 'flex', alignItems: 'center', pl: 1, pb: 1 }}>
             <Rating name="read-only" precision={0.1} value={movie.vote_average / 2} readOnly />
-            <p>{movie.vote_average}</p>
+            <Box sx={{ ml: 2 }}>{ movie.vote_average.toFixed(2) }</Box>
         </Box>
       </Box>
       

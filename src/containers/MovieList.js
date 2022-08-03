@@ -3,16 +3,22 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 
 import MovieCard from '../components/MovieCard';
+import tmdb from '../apis/tmdb';
 
 const MovieList = () => {
     const [movies, setMovies] = useState([]);
 
     useEffect(() => {
         const fetchMovies = async () => {
-            const fetchedMovies = await axios.get("https://api.themoviedb.org/3/trending/movie/week?api_key=e47120c43c7741d21ee931d7b934532f");
-            setMovies(fetchedMovies.data.results);
-        }
-        
+            //const fetchedMovies = await axios.get("trending/movie/week?api_key=e47120c43c7741d21ee931d7b934532f");            
+            try {
+                const fetchedMovies = await tmdb.get("trending/movie/week");
+                setMovies(fetchedMovies.data.results);
+            } catch (error) {
+                console.log(error)
+            }
+                
+        }        
         fetchMovies();
     }, []);
 
